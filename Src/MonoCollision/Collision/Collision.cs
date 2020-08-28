@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 
-namespace ConsoleApp26
+namespace MonoCollision
 {
     public struct Collision
     {

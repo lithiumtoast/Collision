@@ -1,4 +1,4 @@
-﻿namespace ConsoleApp26
+﻿namespace MonoCollision
 {
     public interface ICollisionActor
     {

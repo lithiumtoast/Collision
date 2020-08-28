@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Diagnostics;
 using Microsoft.Xna.Framework;
-using MonoCollision;
 using MonoGame.Extended;
 
-namespace ConsoleApp26
+namespace MonoCollision
 {
     public readonly struct Collider
     {

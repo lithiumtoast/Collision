@@ -1,3 +1,6 @@
+# C# build artifacts
+bin/
+obj/
 
 # JetBrains
 .idea/

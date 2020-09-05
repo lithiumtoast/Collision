@@ -19,16 +19,16 @@ namespace MonoCollision
             Bounds.Position += Velocity * gameTime.GetElapsedSeconds() * 50;
         }
 
-        public Collider GetCollider()
-        {
-            return new Collider(Bounds);
-        }
-
-        public virtual void HandleCollision(Collision collision)
-        {
-            RandomizeVelocity();
-            Bounds.Position -= collision.Penetration;
-        }
+        // public Collider GetCollider()
+        // {
+        //     return new Collider(Bounds);
+        // }
+        //
+        // public virtual void HandleCollision(Collision collision)
+        // {
+        //     RandomizeVelocity();
+        //     Bounds.Position -= collision.Penetration;
+        // }
 
         private void RandomizeVelocity()
         {

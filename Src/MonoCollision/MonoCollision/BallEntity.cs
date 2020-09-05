@@ -18,17 +18,17 @@ namespace MonoCollision
         {
             Bounds.Position += Velocity * gameTime.GetElapsedSeconds() * 30;
         }
+        //
+        // public Collider GetCollider()
+        // {
+        //     return new Collider(Bounds);
+        // }
 
-        public Collider GetCollider()
-        {
-            return new Collider(Bounds);
-        }
-
-        public void HandleCollision(Collision collision)
-        {
-            RandomizeVelocity();
-            Bounds.Position -= collision.Penetration;
-        }
+        // public void HandleCollision(Collision collision)
+        // {
+        //     RandomizeVelocity();
+        //     Bounds.Position -= collision.Penetration;
+        // }
 
         private void RandomizeVelocity()
         {

@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using MonoGame.Extended;
 
 namespace MonoCollision
 {
@@ -19,7 +17,7 @@ namespace MonoCollision
 
         private DateTime prev = DateTime.Now;
         
-        private readonly CollisionWorld _world = new CollisionWorld(new RectangleF(0, 0, MapWidth, MapHeight));
+        private readonly CollisionWorld _world = new CollisionWorld();
 
         public CollisionGame()
         {
@@ -35,27 +33,38 @@ namespace MonoCollision
             _graphics.PreferredBackBufferHeight = MapHeight;
             _graphics.PreferredBackBufferWidth = MapWidth;
             _graphics.ApplyChanges();
+            //
+            // _world.Add(new PlayerEntity {Bounds = new RectangleF(150, 150, 50, 50)});
+
+            var circle = default(BroadphaseCircle);
+            circle.Center = new Vector2(100, 100);
+            circle.Radius = 50;
+            var ball = new BallEntity();
+            _world.CreateCollider(ball, circle);
             
-            _world.Add(new PlayerEntity {Bounds = new RectangleF(150, 150, 50, 50)});
+            // for (var i = 0; i < 500; i++)
+            // {
+            //     var circle = default(BroadphaseCircle);
+            //     circle.Center = new Vector2(Random.Next(-MapWidth, MapWidth * 2), Random.Next(0, MapHeight));
+            //     circle.Radius = Random.Next(5, 15);
+            //     var ball = new BallEntity();
+            //     _world.CreateCollider(ball, circle);
+            // }
+            
+            var rectangle = default(BroadphaseCircle);
+            rectangle.Center = new Vector2(100, 50);
+            rectangle.Radius = 100;
+            var box = new CubeEntity();
+            _world.CreateCollider(box, rectangle);
 
-            for (var i = 0; i < 5000; i++)
-            {
-                _world.Add(new BallEntity
-                {
-                    Bounds = new CircleF(new Point2(Random.Next(-MapWidth, MapWidth * 2), Random.Next(0, MapHeight)),
-                        Random.Next(5, 15))
-                });
-            }
-
-            for (var i = 0; i < 5000; i++)
-            {
-                var size = Random.Next(5, 15);
-                _world.Add(new CubeEntity
-                {
-                    Bounds = new RectangleF(new Point2(Random.Next(-MapWidth, MapWidth * 2), Random.Next(0, MapHeight)),
-                        new Size2(size, size))
-                });
-            }
+            // for (var i = 0; i < 500; i++)
+            // {
+            //     var rectangle = default(BroadphaseRectangle);
+            //     rectangle.Maximum = new Vector2(Random.Next(-MapWidth, MapWidth * 2), Random.Next(0, MapHeight));
+            //     rectangle.Minimum = new Vector2(Random.Next(-MapWidth, MapWidth * 2), Random.Next(0, MapHeight));
+            //     var box = new CubeEntity();
+            //     _world.CreateCollider(box, rectangle);
+            // }
         }
 
         protected override void LoadContent()
@@ -90,10 +99,10 @@ namespace MonoCollision
 
             _spriteBatch.Begin();
             
-            foreach (var entity in _world.GetEntities())
-            {
-                entity.Draw(_spriteBatch);
-            }
+            // foreach (var entity in _world.GetEntities())
+            // {
+            //     entity.Draw(_spriteBatch);
+            // }
 
             _spriteBatch.End();
 

@@ -14,10 +14,10 @@ namespace MonoCollision
             spriteBatch.DrawRectangle(Bounds, Color.Blue, 3);
         }
 
-        public override void HandleCollision(Collision collision)
-        {
-            //Do nothing
-        }
+        // public override void HandleCollision(Collision collision)
+        // {
+        //     //Do nothing
+        // }
 
         public override void Update(GameTime gameTime)
         {
